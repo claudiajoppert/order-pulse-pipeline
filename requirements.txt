@@ -1,5 +1,13 @@
-streamlit==1.37.1
-pandas==2.2.2
-numpy==1.26.3
-duckdb==1.0.0
+# streamlit, pandas, numpy, and duckdb are floor-pinned rather than
+# exact-pinned: confirmed live (in warm-intro-agent's deploy) that exact
+# pins from this era have no prebuilt wheels on newer Python releases used
+# by Streamlit Community Cloud by default, forcing a source build that
+# either hangs or fails outright in the sandboxed build environment. If
+# you hit this anyway, pin the app's Python version to 3.12 in Streamlit
+# Cloud's app settings (General -> Python version) - that was the actual
+# fix, these floor pins are extra insurance.
+streamlit>=1.37
+pandas>=2.2
+numpy>=1.26
+duckdb>=1.0
 plotly==5.24.1
